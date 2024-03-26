@@ -52,13 +52,14 @@ func main() {
 		fmt.Printf("bytes: %v\n",  bytes)
 	}
 
-	br := bufio.NewReader(f)
+	reader := bufio.NewReader(f)
 	lineCount := 0
 	wordCount := 0
 	charCount := 0
+	
 
 	for {
-		b,err := br.ReadByte()
+		cr, br, err := reader.ReadRune()
 
 		if err != nil && !errors.Is(err, io.EOF) {
 			fmt.Println(err)
